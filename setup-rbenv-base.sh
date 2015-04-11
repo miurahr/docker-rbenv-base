@@ -33,9 +33,13 @@ chmod +x /etc/profile.d/rbenv.sh
 #
 # install rbenv-sudo
 mkdir /opt/rbenv/plugins
-git clone git://github.com/dcarley/rbenv-sudo.git /opt/rbenv/plugins/rbenv-sudo
+git clone --depth 1 git://github.com/dcarley/rbenv-sudo.git /opt/rbenv/plugins/rbenv-sudo
 
 # Install ruby-build as rbenv plugin
-git clone git://github.com/sstephenson/ruby-build.git /opt/rbenv/plugins/ruby-build
+git clone --depth 1 git://github.com/sstephenson/ruby-build.git /opt/rbenv/plugins/ruby-build
+
+env DEBIAN_FRONTEND=noninteractive apt-get -y remove git-core
+env DEBIAN_FRONTEND=noninteractive apt-get -y autoremove
+env DEBIAN_FRONTEND=noninteractive apt-get clean
 
 exit 0
